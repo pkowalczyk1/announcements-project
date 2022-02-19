@@ -14,7 +14,7 @@
     <div class="show mt-2">
       <i *ngIf="!showAdd" class="fa-solid fa-plus" (click)="showForm()"></i>
     </div>
-    <form class="mt-3" *ngIf="showAdd" #infoForm="ngForm" action="" (ngSubmit)="newInfo(infoForm)">
+    <form class="mt-3" [@showHideAnimation] *ngIf="showAdd" #infoForm="ngForm" action="" (ngSubmit)="newInfo(infoForm)">
       <div class="wrapper">
         <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info" placeholder="Dodaj informację" required></textarea>
         <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
