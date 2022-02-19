@@ -1,15 +1,25 @@
-<div class="container">
-  <div class="title">
-    <h5>Najważniejsze informacje</h5>
-  </div>
-  <div class="list-group list-group-flush mb-3">
-    <li *ngFor="let info of infos" class="list-group-item mb-2">{{info}}</li>
-  </div>
-  <form #infoForm="ngForm" action="" (ngSubmit)="newInfo(infoForm)">
-    <div class="wrapper">
-      <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info" placeholder="Dodaj informację" required></textarea>
-      <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
+<div class="main">
+  <div class="container-fluid mt-1 m-3">
+    <div class="mb-3">
+      <h5>Najważniejsze informacje</h5>
     </div>
-  </form>
+    <div class="list-group list-group-flush">
+      <li *ngFor="let info of infos" class="list-group-item mb-2">
+        <div>
+          {{info}}
+        </div>
+        <i class="fa-solid fa-trash"></i>
+      </li>
+    </div>
+    <div class="show mt-2">
+      <i *ngIf="!showAdd" class="fa-solid fa-plus" (click)="showForm()"></i>
+    </div>
+    <form class="mt-3" *ngIf="showAdd" #infoForm="ngForm" action="" (ngSubmit)="newInfo(infoForm)">
+      <div class="wrapper">
+        <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info" placeholder="Dodaj informację" required></textarea>
+        <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
+      </div>
+    </form>
+  </div>
 </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
+import {DataService} from "../../services/data.service";
 
 @Component({
   selector: 'app-important-info',
@@ -7,17 +8,26 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./important-info.component.css']
 })
 export class ImportantInfoComponent implements OnInit {
-  infos: string[] = [];
+  infos: string[];
   newEntry!: string;
+  showAdd: boolean;
 
-  constructor() { }
+  constructor(private dataService: DataService) {
+    this.infos = this.dataService.getInfo();
+    this.showAdd = false;
+  }
 
   ngOnInit(): void {
   }
 
-  newInfo(form: NgForm) {
-    this.infos.push(this.newEntry);
+  newInfo(form: NgForm): void {
+    this.dataService.addInfo(this.newEntry);
     form.resetForm();
+    this.showAdd = false;
+  }
+
+  showForm(): void {
+    this.showAdd = true;
   }
 
 }
