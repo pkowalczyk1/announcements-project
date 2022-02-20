@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
+import {Info} from "../info";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  infos: string[] = [];
+  infos: Info[] = [];
+  currId: number = 0;
 
   constructor() { }
 
   addInfo(newInfo: string): void {
-    this.infos.push(newInfo);
+    this.infos.push({id: this.currId, text: newInfo});
+    this.currId++;
   }
 
-  getInfo(): string[] {
+  getInfo(): Info[] {
     return this.infos;
   }
 }

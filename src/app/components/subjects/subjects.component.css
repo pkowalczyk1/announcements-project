@@ -1,1 +1,7 @@
-
+.container-fluid {
+  border: 1px solid dimgrey;
+  border-radius: 5px;
+  padding: 20px;
+  background: rgba(125, 32, 32);
+  color: white;
+}
