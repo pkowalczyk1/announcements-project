@@ -3,5 +3,24 @@
     <div class="mb-3">
       <h5>Kalendarz</h5>
     </div>
+    <div class="list-group list-group-flush">
+      <li *ngFor="let entry of calendar" class="list-group-item mb-2">
+        <div>
+          <h5>{{entry.date.toLocaleDateString()}}</h5>
+          <p>{{entry.content}}</p>
+        </div>
+        <i class="fa-solid fa-trash"></i>
+      </li>
+    </div>
+    <div *ngIf="!showForm" class="show mt-2">
+      <i class="fa-solid fa-plus" (click)="showAdd()"></i>
+    </div>
+    <form *ngIf="showForm" class="mt-3" #infoForm="ngForm" action="" (ngSubmit)="addEntry(infoForm)">
+      <div class="wrapper">
+        <input class="form-control" [(ngModel)]="date" name="date" type="date" placeholder="Data" required>
+        <textarea class="form-control" [(ngModel)]="content" id="new-entry" name="new-entry" placeholder="Dodaj informację" required></textarea>
+        <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
+      </div>
+    </form>
   </div>
 </div>
