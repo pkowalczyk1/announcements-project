@@ -4,11 +4,11 @@
       <h5>Najważniejsze informacje</h5>
     </div>
     <div class="list-group list-group-flush">
-      <li *ngFor="let info of infos" class="list-group-item mb-2">
+      <li *ngFor="let info of infos | async" class="list-group-item mb-2">
         <div>
           {{info.text}}
         </div>
-        <i class="fa-solid fa-trash"></i>
+        <i class="fa-solid fa-trash" (click)="deleteInfo(info.id)"></i>
       </li>
     </div>
     <div class="show mt-2">

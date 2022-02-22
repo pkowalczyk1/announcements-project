@@ -3,6 +3,7 @@ import {NgForm} from "@angular/forms";
 import {DataService} from "../../services/data.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {Info} from "../../info";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-important-info',
@@ -32,8 +33,9 @@ import {Info} from "../../info";
     )
   ]
 })
+
 export class ImportantInfoComponent implements OnInit {
-  infos: Info[];
+  infos: Observable<Info[]>;
   newEntry!: string;
   showAdd: boolean;
 
@@ -51,7 +53,9 @@ export class ImportantInfoComponent implements OnInit {
     this.showAdd = false;
   }
 
-
+  deleteInfo(id: string): void {
+    this.dataService.deleteInfo(id);
+  }
 
   showForm(): void {
     this.showAdd = true;

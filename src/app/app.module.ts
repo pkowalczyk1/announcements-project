@@ -9,6 +9,18 @@ import { ImportantInfoComponent } from './components/important-info/important-in
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDeq2hzrUqWG8ibhMWHxcZDMTZeQolQTBQ",
+  authDomain: "forum-fbe06.firebaseapp.com",
+  projectId: "forum-fbe06",
+  storageBucket: "forum-fbe06.appspot.com",
+  messagingSenderId: "43089257703",
+  appId: "1:43089257703:web:0829cc34e60d0ca89d2e42"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +32,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFirestoreModule
     ],
   providers: [],
   bootstrap: [AppComponent]

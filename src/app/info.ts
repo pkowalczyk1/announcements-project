@@ -1,4 +1,4 @@
 export interface Info {
-  id: number;
+  id: string;
   text: string;
 }
