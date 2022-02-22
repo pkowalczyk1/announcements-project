@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {Info} from "../info";
 import {CalendarEntry} from "../calendar-entry";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +10,13 @@ import {Observable} from "rxjs";
 export class DataService {
   db: any;
   infos: Observable<Info[]>;
-  calendar: CalendarEntry[] = [];
+  calendar: Observable<CalendarEntry[]>;
   currId: number = 0;
 
   constructor(db: AngularFirestore) {
     this.db = db;
-    this.infos = this.db.collection('infos').valueChanges({idField: "id"});
+    this.infos = this.db.collection("infos").valueChanges({idField: "id"});
+    this.calendar = this.db.collection("calendar").valueChanges({idField: "id"});
   }
 
   addInfo(newInfo: string): void {
@@ -31,11 +32,14 @@ export class DataService {
   }
 
   addCalendarEntry(content: string, date: string) {
-    this.calendar.push({id: this.currId, date: new Date(date), content: content});
-    this.calendar.sort((a, b) => a.date.getTime() - b.date.getTime());
+    this.db.collection("calendar").add({date: new Date(date), content: content});
   }
 
-  getCalendar(): CalendarEntry[] {
+  deleteCalendarEntry(id: string) {
+    this.db.collection("calendar").doc(id).delete();
+  }
+
+  getCalendar(): Observable<CalendarEntry[]> {
     return this.calendar;
   }
 }

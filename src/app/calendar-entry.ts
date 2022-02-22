@@ -1,5 +1,5 @@
 export interface CalendarEntry {
-  id: number;
-  date: Date;
+  id: string;
+  date: any;
   content: string;
 }

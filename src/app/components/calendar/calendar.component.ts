@@ -1,30 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CalendarEntry} from "../../calendar-entry";
 import {NgForm} from "@angular/forms";
 import {DataService} from "../../services/data.service";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
-  calendar: CalendarEntry[];
+export class CalendarComponent implements OnInit, OnDestroy {
+  calendar$: Observable<CalendarEntry[]>;
+  calendar!: CalendarEntry[];
   date!: string;
   content!: string;
   showForm: boolean = false;
+  subscription!: Subscription;
 
   constructor(private data: DataService) {
-    this.calendar = data.getCalendar();
+    this.calendar$ = data.getCalendar();
   }
 
   ngOnInit(): void {
+    this.subscription = this.calendar$.subscribe(value => {
+      console.log(value);
+      value.sort((a, b) => a.date - b.date);
+      this.calendar = value;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   addEntry(form: NgForm): void {
     this.data.addCalendarEntry(this.content, this.date);
     form.resetForm();
     this.showForm = false;
+  }
+
+  deleteEntry(id: string): void {
+    this.data.deleteCalendarEntry(id);
   }
 
   showAdd(): void {

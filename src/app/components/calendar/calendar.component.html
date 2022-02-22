@@ -6,10 +6,10 @@
     <div class="list-group list-group-flush">
       <li *ngFor="let entry of calendar" class="list-group-item mb-2">
         <div>
-          <h5>{{entry.date.toLocaleDateString()}}</h5>
+          <h5>{{entry.date.toDate() | date: "dd/MM/yyy"}}</h5>
           <p>{{entry.content}}</p>
         </div>
-        <i class="fa-solid fa-trash"></i>
+        <i class="fa-solid fa-trash" (click)="deleteEntry(entry.id)"></i>
       </li>
     </div>
     <div *ngIf="!showForm" class="show mt-2">
