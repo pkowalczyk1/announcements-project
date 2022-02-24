@@ -1,0 +1,14 @@
+<div *ngIf="subject$ | async as subject">
+  <h4>{{subject.name | titlecase}}</h4>
+  <ul>
+    <li *ngFor="let info of subject.infos">
+      <p>{{info}}</p>
+    </li>
+    <form class="mt-3" #infoForm="ngForm" action="" (ngSubmit)="newInfo(infoForm)">
+      <div class="wrapper">
+        <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info" placeholder="Dodaj informację" required></textarea>
+        <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
+      </div>
+    </form>
+  </ul>
+</div>

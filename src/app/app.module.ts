@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { SubjectDetailsComponent } from './components/subject-details/subject-details.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDeq2hzrUqWG8ibhMWHxcZDMTZeQolQTBQ",
@@ -26,7 +28,9 @@ const firebaseConfig = {
     AppComponent,
     SubjectsComponent,
     ImportantInfoComponent,
-    CalendarComponent
+    CalendarComponent,
+    SubjectDetailsComponent,
+    HomePageComponent
   ],
     imports: [
         BrowserModule,
