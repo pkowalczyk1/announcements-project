@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {DataService} from "../../services/data-service/data.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {Info} from "../../info";
 import {Observable} from "rxjs";
+import firebase from "firebase/compat";
 
 @Component({
   selector: 'app-important-info',
@@ -35,6 +36,8 @@ import {Observable} from "rxjs";
 })
 
 export class ImportantInfoComponent implements OnInit {
+  @Input() user!: firebase.User | null;
+
   infos: Observable<Info[]>;
   newEntry!: string;
   showAdd: boolean;

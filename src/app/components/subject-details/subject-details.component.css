@@ -33,6 +33,18 @@ li {
   cursor: pointer;
 }
 
-li>i {
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  gap: 10px;
+  font-size: 17px;
+}
+
+i {
   cursor: pointer;
 }

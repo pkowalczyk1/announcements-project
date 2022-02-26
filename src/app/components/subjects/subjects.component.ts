@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Subject} from "../../subject";
 import {DataService} from "../../services/data-service/data.service";
 import {Observable} from "rxjs";
 import {NgForm} from "@angular/forms";
+import firebase from "firebase/compat";
 
 @Component({
   selector: 'app-subjects',
@@ -10,6 +11,8 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./subjects.component.css']
 })
 export class SubjectsComponent implements OnInit {
+  @Input() user!: firebase.User | null;
+
   subjects$: Observable<Subject[]>;
   showAdd: boolean = false;
   newEntry!: string;
@@ -29,6 +32,10 @@ export class SubjectsComponent implements OnInit {
     this.data.addSubject(this.newEntry);
     this.showAdd = false;
     infoForm.resetForm();
+  }
+
+  deleteSubject(id: string): void {
+    this.data.deleteSubject(id);
   }
 
 }

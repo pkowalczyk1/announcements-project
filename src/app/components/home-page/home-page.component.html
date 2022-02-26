@@ -1,11 +1,11 @@
 <div class="container-fluid">
-  <app-important-info></app-important-info>
+  <app-important-info [user]="user"></app-important-info>
   <div class="row">
     <div class="col-7">
-      <app-calendar></app-calendar>
+      <app-calendar [user]="user"></app-calendar>
     </div>
     <div class="col-5">
-      <app-subjects></app-subjects>
+      <app-subjects [user]="user"></app-subjects>
     </div>
   </div>
 </div>

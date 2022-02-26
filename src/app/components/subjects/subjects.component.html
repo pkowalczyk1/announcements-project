@@ -8,7 +8,7 @@
         <div>
           <a class="h5 link-dark" [routerLink]="['/subject', subject.id]" routerLinkActive="active">{{subject.name | titlecase}}</a>
         </div>
-        <i class="fa-solid fa-trash"></i>
+        <i class="fa-solid fa-trash" *ngIf="user" (click)="deleteSubject(subject.id)"></i>
       </li>
     </div>
     <div class="show mt-2">

@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CalendarEntry} from "../../calendar-entry";
 import {NgForm} from "@angular/forms";
 import {DataService} from "../../services/data-service/data.service";
 import {Observable, Subscription} from "rxjs";
+import firebase from "firebase/compat";
 
 @Component({
   selector: 'app-calendar',
@@ -10,6 +11,8 @@ import {Observable, Subscription} from "rxjs";
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit, OnDestroy {
+  @Input() user!: firebase.User | null;
+
   calendar$: Observable<CalendarEntry[]>;
   calendar!: CalendarEntry[];
   date!: string;
@@ -23,7 +26,6 @@ export class CalendarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.calendar$.subscribe(value => {
-      console.log(value);
       value.sort((a, b) => a.date - b.date);
       this.calendar = value;
     });

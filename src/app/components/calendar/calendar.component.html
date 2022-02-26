@@ -9,7 +9,7 @@
           <div class="h5">{{entry.date.toDate() | date: "dd/MM/yyy"}}</div>
           <p>{{entry.content}}</p>
         </div>
-        <i class="fa-solid fa-trash" (click)="deleteEntry(entry.id)"></i>
+        <i class="fa-solid fa-trash" *ngIf="user" (click)="deleteEntry(entry.id)"></i>
       </li>
     </div>
     <div *ngIf="!showForm" class="show mt-2">

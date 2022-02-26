@@ -8,7 +8,7 @@
         <div>
           {{info.text}}
         </div>
-        <i class="fa-solid fa-trash" (click)="deleteInfo(info.id)"></i>
+        <i class="fa-solid fa-trash" *ngIf="user" (click)="deleteInfo(info.id)"></i>
       </li>
     </div>
     <div class="show mt-2">

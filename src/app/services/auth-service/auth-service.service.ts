@@ -15,7 +15,7 @@ export class AuthServiceService {
   }
 
   createUser(email: string, password: string): void {
-    this.afAuth.createUserWithEmailAndPassword(email, password)
+    this.afAuth.signInWithEmailAndPassword(email, password)
       .then(result => {
         this.router.navigate(['home']);
       })

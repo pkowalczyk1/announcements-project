@@ -62,4 +62,8 @@ export class DataService {
   updateSubject(id: string, subject: Subject): void {
     this.db.collection("subjects").doc(id).update(subject);
   }
+
+  deleteSubject(id: string): void {
+    this.db.collection("subjects").doc(id).delete();
+  }
 }
