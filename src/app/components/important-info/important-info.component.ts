@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from "@angular/forms";
-import {DataService} from "../../services/data.service";
+import {DataService} from "../../services/data-service/data.service";
 import {animate, style, transition, trigger} from "@angular/animations";
 import {Info} from "../../info";
 import {Observable} from "rxjs";

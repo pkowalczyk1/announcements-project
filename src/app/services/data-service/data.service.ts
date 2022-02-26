@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Info} from "../info";
-import {CalendarEntry} from "../calendar-entry";
+import {Info} from "../../info";
+import {CalendarEntry} from "../../calendar-entry";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {map, Observable} from "rxjs";
-import {SubjectsComponent} from "../components/subjects/subjects.component";
-import {Subject} from "../subject";
+import {SubjectsComponent} from "../../components/subjects/subjects.component";
+import {Subject} from "../../subject";
 
 @Injectable({
   providedIn: 'root'

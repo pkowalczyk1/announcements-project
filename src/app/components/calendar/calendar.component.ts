@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CalendarEntry} from "../../calendar-entry";
 import {NgForm} from "@angular/forms";
-import {DataService} from "../../services/data.service";
+import {DataService} from "../../services/data-service/data.service";
 import {Observable, Subscription} from "rxjs";
 
 @Component({

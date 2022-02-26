@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Subject} from "../../subject";
-import {DataService} from "../../services/data.service";
+import {DataService} from "../../services/data-service/data.service";
 import {Observable} from "rxjs";
 import {NgForm} from "@angular/forms";
 

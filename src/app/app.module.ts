@@ -13,6 +13,14 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { SubjectDetailsComponent } from './components/subject-details/subject-details.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import {MatNativeDateModule} from "@angular/material/core";
+import { LoginComponent } from './components/login/login.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDeq2hzrUqWG8ibhMWHxcZDMTZeQolQTBQ",
@@ -30,17 +38,25 @@ const firebaseConfig = {
     ImportantInfoComponent,
     CalendarComponent,
     SubjectDetailsComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginComponent,
+    NavbarComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        BrowserAnimationsModule,
-        AngularFireModule.initializeApp(firebaseConfig),
-        AngularFirestoreModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+  ],
+  providers: [
+    MatDatepickerModule,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

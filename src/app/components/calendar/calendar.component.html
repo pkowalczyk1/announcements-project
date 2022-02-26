@@ -1,12 +1,12 @@
 <div class="main">
   <div class="container-fluid mt-2 m-3">
     <div class="mb-3">
-      <h5>Kalendarz</h5>
+      <div class="h4">Kalendarz</div>
     </div>
     <div class="list-group list-group-flush">
       <li *ngFor="let entry of calendar" class="list-group-item mb-2">
         <div>
-          <h5>{{entry.date.toDate() | date: "dd/MM/yyy"}}</h5>
+          <div class="h5">{{entry.date.toDate() | date: "dd/MM/yyy"}}</div>
           <p>{{entry.content}}</p>
         </div>
         <i class="fa-solid fa-trash" (click)="deleteEntry(entry.id)"></i>
