@@ -37,6 +37,6 @@ li>i {
   cursor: pointer;
 }
 
-a {
-  text-decoration: none;
+a:hover {
+  color: #2380ff;
 }
