@@ -1,21 +1,43 @@
-<div class="container" *ngIf="subject">
-  <div class="h4">{{subject.name | titlecase}}</div>
-  <ul class="list-group">
-    <li *ngFor="let info of subject.infos; let i = index" class="list-group-item mb-2 content" aria-current="true">
-      <div class="text">
-        {{info}}
+<div class="main">
+  <div class="container" *ngIf="subject">
+    <div class="h4">{{subject.name | titlecase}}</div>
+    <ul class="list-group">
+      <li *ngFor="let info of subject.infos; let i = index" class="list-group-item content" aria-current="true">
+        <div class="li-content mb-3">
+          <div class="text">
+            {{info.content}}
+          </div>
+          <div class="icons" *ngIf="user">
+            <i class="fa-solid fa-chevron-down" *ngIf="i != subject.infos.length - 1" (click)="moveDown(i)"></i>
+            <i class="fa-solid fa-chevron-up" *ngIf="i != 0" (click)="moveUp(i)"></i>
+            <i class="fa-solid fa-trash" (click)="deleteInfo(i)"></i>
+          </div>
+        </div>
+        <ul>
+          <li class="mb-2 text" *ngFor="let text of info.texts">{{text}}</li>
+        </ul>
+        <div class="show mt-2">
+          <i *ngIf="info.isExtendable && !showSubform[i]" class="fa-solid fa-plus" (click)="showForm(i)"></i>
+        </div>
+        <form *ngIf="info.isExtendable && showSubform[i]" id="sub-form" class="mt-3" #subInfoForm="ngForm" action="" (ngSubmit)="newSubInfo(subInfoForm, i)">
+          <div class="wrapper">
+            <textarea [(ngModel)]="subInfo" class="form-control" id="new-subinfo" name="new-subinfo" placeholder="Dodaj informację" required></textarea>
+            <button type="submit" class="btn btn-primary" [disabled]="!subInfoForm.valid">Dodaj</button>
+          </div>
+        </form>
+      </li>
+    </ul>
+    <form class="mt-3" #infoForm="ngForm" action="" (ngSubmit)="newInfo(infoForm)">
+      <div class="wrapper">
+        <div class="form-check">
+          <input [(ngModel)]="extendable" class="form-check-input" type="checkbox" value="" id="check" name="check">
+          <label class="form-check-label" for="check">
+            Rozszerzona informacja?
+          </label>
+        </div>
+        <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info" placeholder="Dodaj informację" required></textarea>
+        <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
       </div>
-      <div class="icons" *ngIf="user">
-        <i class="fa-solid fa-chevron-down" *ngIf="i != subject.infos.length - 1" (click)="moveDown(i)"></i>
-        <i class="fa-solid fa-chevron-up" *ngIf="i != 0" (click)="moveUp(i)"></i>
-        <i class="fa-solid fa-trash" (click)="deleteInfo(i)"></i>
-      </div>
-    </li>
-  </ul>
-  <form class="mt-3" #infoForm="ngForm" action="" (ngSubmit)="newInfo(infoForm)">
-    <div class="wrapper">
-      <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info" placeholder="Dodaj informację" required></textarea>
-      <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

@@ -20,7 +20,7 @@ export class DataService {
     this.db = db;
     this.infos = this.db.collection("infos").valueChanges({idField: "id"});
     this.calendar = this.db.collection("calendar").valueChanges({idField: "id"});
-    this.subjects = this.db.collection("subjects").valueChanges({idField: "id"});
+    this.subjects = this.db.collection("subjects2").valueChanges({idField: "id"});
   }
 
   addInfo(newInfo: string): void {
@@ -48,7 +48,7 @@ export class DataService {
   }
 
   addSubject(name: string): void {
-    this.db.collection("subjects").add({name: name, infos: []});
+    this.db.collection("subjects2").add({name: name, infos: []});
   }
 
   getSubjects(): Observable<Subject[]> {
@@ -56,14 +56,14 @@ export class DataService {
   }
 
   getSubject(id: string): Observable<Subject> {
-    return this.db.collection("subjects").doc(id).valueChanges();
+    return this.db.collection("subjects2").doc(id).valueChanges();
   }
 
   updateSubject(id: string, subject: Subject): void {
-    this.db.collection("subjects").doc(id).update(subject);
+    this.db.collection("subjects2").doc(id).update(subject);
   }
 
   deleteSubject(id: string): void {
-    this.db.collection("subjects").doc(id).delete();
+    this.db.collection("subjects2").doc(id).delete();
   }
 }
