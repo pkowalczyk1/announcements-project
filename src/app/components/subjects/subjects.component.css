@@ -1,42 +1,42 @@
 .container-fluid {
-  border: 1px solid dimgrey;
-  border-radius: 5px;
-  padding: 20px;
-  background: rgba(125, 32, 32);
-  color: white;
+    border: 1px solid dimgrey;
+    border-radius: 5px;
+    padding: 20px;
+    background: rgba(125, 32, 32);
+    color: white;
 }
 
 .wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
 li, .list-group {
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
 .btn {
-  align-self: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+    align-self: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.show>i {
-  font-size: 20px;
-  cursor: pointer;
+.show > i {
+    font-size: 20px;
+    cursor: pointer;
 }
 
-li>i {
-  cursor: pointer;
+li > i {
+    cursor: pointer;
 }
 
 a:hover {
-  color: #2380ff;
+    color: #2380ff;
 }

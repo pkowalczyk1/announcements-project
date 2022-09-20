@@ -1,24 +1,26 @@
 <div class="main">
-  <div class="container-fluid mt-2 m-3">
-    <div class="mb-3">
-      <div class="h4">Przedmioty</div>
-    </div>
-    <div class="list-group list-group-flush">
-      <li *ngFor="let subject of subjects$ | async" class="list-group-item mb-2">
-        <div>
-          <a class="h5 link-dark" [routerLink]="['/subject', subject.id]" routerLinkActive="active">{{subject.name | titlecase}}</a>
+    <div class="container-fluid mt-2 m-3">
+        <div class="mb-3">
+            <div class="h4">Przedmioty</div>
         </div>
-        <i class="fa-solid fa-trash" *ngIf="user" (click)="deleteSubject(subject.id)"></i>
-      </li>
+        <div class="list-group list-group-flush">
+            <li *ngFor="let subject of subjects$ | async" class="list-group-item mb-2">
+                <div>
+                    <a class="h5 link-dark" [routerLink]="['/subject', subject.id]"
+                       routerLinkActive="active">{{subject.name | titlecase}}</a>
+                </div>
+                <i class="fa-solid fa-trash" *ngIf="user" (click)="deleteSubject(subject.id)"></i>
+            </li>
+        </div>
+        <div class="show mt-2">
+            <i *ngIf="!showAdd" class="fa-solid fa-plus" (click)="showForm()"></i>
+        </div>
+        <form class="mt-3" *ngIf="showAdd" #infoForm="ngForm" action="" (ngSubmit)="newSubject(infoForm)">
+            <div class="wrapper">
+                <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info"
+                          placeholder="Dodaj informację" required></textarea>
+                <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
+            </div>
+        </form>
     </div>
-    <div class="show mt-2">
-      <i *ngIf="!showAdd" class="fa-solid fa-plus" (click)="showForm()"></i>
-    </div>
-    <form class="mt-3" *ngIf="showAdd" #infoForm="ngForm" action="" (ngSubmit)="newSubject(infoForm)">
-      <div class="wrapper">
-        <textarea [(ngModel)]="newEntry" class="form-control" id="new-info" name="new-info" placeholder="Dodaj informację" required></textarea>
-        <button type="submit" class="btn btn-primary" [disabled]="!infoForm.valid">Dodaj</button>
-      </div>
-    </form>
-  </div>
 </div>

@@ -1,56 +1,60 @@
 .wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
 }
 
 li, .list-group {
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
-.btn {
-  align-self: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
+.info-button {
+    align-self: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .li-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /*font-weight: bold;*/
-  font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*font-weight: bold;*/
+    font-size: 18px;
 }
 
-.show>i {
-  font-size: 20px;
-  cursor: pointer;
+.show > i {
+    font-size: 20px;
+    cursor: pointer;
 }
-
-/*.content {*/
-/*  display: flex;*/
-/*  justify-content: space-between;*/
-/*  align-items: center;*/
-/*}*/
 
 .icons {
-  display: flex;
-  gap: 10px;
-  font-size: 17px;
+    display: flex;
+    gap: 10px;
+    font-size: 17px;
 }
 
 i {
-  cursor: pointer;
+    cursor: pointer;
 }
 
-/*#sub-form {*/
-/*  width: 50%;*/
-/*}*/
-
 .text {
-  white-space: pre-wrap;
+    white-space: pre-wrap;
 }
 
 .main {
-  padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+hr {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    height: 2px;
+    width: 75%;
+    align-self: center;
+}
+
+a:hover {
+    color: #2380ff;
 }
